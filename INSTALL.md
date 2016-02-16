@@ -356,6 +356,7 @@ command line tool. For example:
 ```bash
 $ cd lib/Doctrine
 $ vim entities/Site.php     # modify the Site entity object, e.g. add a new 'timezoneId' value
+$ doctrine orm:validate-schema
 $ doctrine orm:schema-tool:update --dump-sql
 ALTER TABLE SITES ADD (timezoneId VARCHAR2(255) DEFAULT NULL)
 $ doctrine orm:schema-tool:update --force
@@ -363,6 +364,9 @@ Updating database schema...
 Database schema updated successfully! "1" queries were executed
 ```
 
+*Note:*
+
+If you have added a new doctrine entity, you will need to add the entity file to `lib/Doctrine/bootstrap.php`, and `tests/doctrine/bootstrap.php` before running `doctrine orm:schema-tool:update`
 
 ## Updating from old versions (5.2+) <a id="versionupdate"></a>
 Newer releases of Gocdb require updating the DB schema and updating the legacy 
